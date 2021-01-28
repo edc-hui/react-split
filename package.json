@@ -1,26 +1,26 @@
 {
-  "name": "react-split",
+  "name": "@huisiyu/react-split",
   "version": "0.1.0",
-  "private": true,
+  "description": "react分割面板",
+  "private": false,
+  "license": "MIT",
+  "keywords": [
+    "split",
+    "react-split"
+  ],
   "dependencies": {
-    "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^11.1.0",
-    "@testing-library/user-event": "^12.1.10",
-    "@types/jest": "^26.0.15",
-    "@types/node": "^12.0.0",
-    "@types/react": "^16.9.53",
-    "@types/react-dom": "^16.9.8",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "react-scripts": "4.0.1",
-    "typescript": "^4.0.3",
-    "web-vitals": "^0.2.4"
+    "classnames": "^2.2.6",
+    "lodash": "^4.17.20"
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "clean": "rimraf ./dist",
+    "build": "yarn clean && yarn dist-ts && yarn dist-css",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "dist-ts": "tsc -p tsconfig.build.json",
+    "dist-css": "node-sass ./src/Split/Split.scss ./dist/index.css",
+    "prepublish": "npm run build"
   },
   "eslintConfig": {
     "extends": [
@@ -28,6 +28,17 @@
       "react-app/jest"
     ]
   },
+  "homepage": "https://github.com/edc-hui/react-split",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/edc-hui/react-split"
+  },
+  "files": [
+    "dist"
+  ],
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
   "browserslist": {
     "production": [
       ">0.2%",
@@ -39,5 +50,26 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/classnames": "^2.2.11",
+    "@types/lodash": "^4.14.168",
+    "node-sass": "^4.14.1",
+    "rimraf": "^3.0.2",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-scripts": "4.0.1",
+    "typescript": "^4.0.3",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
+    "@types/jest": "^26.0.15",
+    "@types/node": "^12.0.0",
+    "@types/react": "^16.9.53",
+    "@types/react-dom": "^16.9.8"
+  },
+  "peerDependencies": {
+    "react": ">=16.9.0",
+    "react-dom": ">=16.9.0"
   }
 }
